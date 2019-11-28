@@ -1,5 +1,5 @@
 import React from 'react';
-import 'LoginComponent.css';
+import './LoginComponent.css';
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import AuthService from '../services/AuthService';
 
-export default class Login extends React.Component {
+export default class LoginComponent extends React.Component {
   constructor(props) {
     super(props);
     
@@ -67,5 +67,5 @@ export default class Login extends React.Component {
       </Container>
       </React.Fragment>
     );
-  }
-}
+  };
+};

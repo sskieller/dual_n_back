@@ -6,7 +6,7 @@ import Game from './Pages/GameComponent';
 import Login from './Pages/LoginComponent';
 import Registration from './Pages/RegistrationComponent';
 
-import logo from './../public/logo192.png';
+import logo from './logo/logo192.png';
 
 class App extends React.Component {
   render() {
@@ -14,7 +14,7 @@ class App extends React.Component {
       <Router>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="http://google.com/" target="_blank">
+            <a className="navbar-brand" href="http://google.com/" target="_blank" rel="noopener noreferrer">
               <img src={logo} width="30" height="30" alt="google" />
             </a>
 
@@ -32,9 +32,6 @@ class App extends React.Component {
           <Route path="/" exact component={Game} />
         <Route path="/user/new" component={Registration} />
         <Route path="/user/login" component={Login} />
-        {/* Game screen shows ending list of scores, two components with high scores, game, menu bar on top */}
-        {/* Automatically rerouted to login/registration if no/faulty JWT registered */}
-        {/* Scores can be seen next to game? */}
         </div>
       </Router>
     );

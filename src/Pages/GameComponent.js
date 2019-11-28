@@ -1,10 +1,15 @@
 import React from 'react';
 
-export default class Game extends React.Component {
+import BoardComponent from './Game/BoardComponent';
+import GameLogicComponent from './Game/GameLogicComponent';
+import HighscoreComponent from './Game/HighscoreComponent';
+import ScoreComponent from './Game/ScoreComponent';
+
+export default class GameComponent extends React.Component {
   render() {
     return (
       <div>
-        <p>Welcome to this dual n back game!</p>
+        <p>Game component works</p>
       </div>
     );
   }
