@@ -1,41 +1,41 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Game from './Pages/GameComponent';
-import Login from './Pages/LoginComponent';
-import Registration from './Pages/RegistrationComponent';
+import Game from "./Pages/GameComponent";
+import Login from "./Pages/LoginComponent";
+import Registration from "./Pages/RegistrationComponent";
 
-import logo from './logo/logo192.png';
+import logo from "./logo/logo192.png";
 
 class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="http://google.com/" target="_blank" rel="noopener noreferrer">
-              <img src={logo} width="30" height="30" alt="google" />
-            </a>
+	render() {
+		return (
+			<Router>
+				<div className="container">
+					<nav className="navbar navbar-expand-lg navbar-light bg-light">
+						<a className="navbar-brand" href="http://google.com/" target="_blank" rel="noopener noreferrer">
+							<img src={logo} width="30" height="30" alt="google" />
+						</a>
 
-            <Link to="/" className="navbar-brand">DUAL-N-BACK App</Link>
-            <div className="collpase navbar-collapse">
-            <ul className="navbar-nav mr-auto">
-              <li className="navbar-item"> 
-                <Link to="/" className="nav-link">Game</Link>
-              </li>
-            </ul>
-            </div>
+						<Link to="/" className="navbar-brand">DUAL-N-BACK App</Link>
+						<div className="collpase navbar-collapse">
+							<ul className="navbar-nav mr-auto">
+								<li className="navbar-item"> 
+									<Link to="/" className="nav-link">Game</Link>
+								</li>
+							</ul>
+						</div>
 
-          </nav>
-          <br/>
-          <Route path="/" exact component={Game} />
-        <Route path="/user/new" component={Registration} />
-        <Route path="/user/login" component={Login} />
-        </div>
-      </Router>
-    );
-  }
+					</nav>
+					<br/>
+					<Route path="/" exact component={Game} />
+					<Route path="/user/new" component={Registration} />
+					<Route path="/user/login" component={Login} />
+				</div>
+			</Router>
+		);
+	}
 }
 
 
