@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const USER_API_BASE_URL = "http://localhost:4000/users";
+const USER_API_BASE_URL = "http://localhost:4000/users/";
 
 class AuthService {
 	login(credentials) {
@@ -9,6 +9,10 @@ class AuthService {
 
 	getUserInfo() {
 		return JSON.parse(localStorage.getItem("userInfo"));
+	}
+
+	isAuthenticated() {
+		return this.getUserInfo() !== null;
 	}
 
 	getAuthHeader() {
@@ -25,4 +29,4 @@ class AuthService {
 	}
 }
 
-export default AuthService();
+export default new AuthService();

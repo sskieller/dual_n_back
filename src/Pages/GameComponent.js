@@ -5,6 +5,9 @@ import GameLogicComponent from "./Game/GameLogicComponent";
 import HighscoreComponent from "./Game/HighscoreComponent";
 import ScoreComponent from "./Game/ScoreComponent";
 
+
+
+
 export default class GameComponent extends React.Component {
 	render() {
 		return (
