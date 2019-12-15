@@ -8,5 +8,5 @@ class UserService {
 		return axios.post(USER_API_BASE_URL + "new", user, AuthService.getAuthHeader());
 	}
 }
-   
+
 export default new UserService();

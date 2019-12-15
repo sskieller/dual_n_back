@@ -12,6 +12,8 @@ class AuthService {
 	}
 
 	isAuthenticated() {
+		console.log('getUserInfo from isAuthenticated: ');
+		console.log(this.getUserInfo());
 		return this.getUserInfo() !== null;
 	}
 

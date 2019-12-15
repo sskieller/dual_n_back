@@ -8,6 +8,7 @@ import Login from "./Pages/LoginComponent";
 import Registration from "./Pages/RegistrationComponent";
 
 import logo from "./logo/logo192.png";
+import GameComponent from "./Pages/GameComponent";
 
 class App extends React.Component {
 	render() {
@@ -31,6 +32,7 @@ class App extends React.Component {
 					</nav>
 					<br />
 					<PrivateRoute path="/" exact component={Game} />
+					<PrivateRoute path="/game" component ={GameComponent} exact />
 					<Route path="/user/new" component={Registration} />
 					<Route path="/user/login" component={Login} />
 				</div>
