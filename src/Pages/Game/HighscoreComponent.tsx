@@ -2,6 +2,7 @@ import React from "react";
 import openSocket from "socket.io-client";
 
 export interface IProps{
+	socket: SocketIOClient.Socket;
 }
 
 export interface IState {
@@ -9,22 +10,17 @@ export interface IState {
 }
 
 export default class HighscoreComponent extends React.Component<IProps, IState> {
-
-	socket: SocketIOClient.Socket;
-
 	constructor(props: any){
 		super(props);
 		this.state = {highscore: 0};
 		
 		// Bind functions so that it doesn't break on render
-		this.handleNewHighscore = this.handleNewHighscore.bind(this);
-
-		this.socket = openSocket('http://localhost:4000');
-		this.socket.on('highscore', this.handleNewHighscore);
-		this.socket.emit('score', {score: 7});
+		this.handleNewScore = this.handleNewScore.bind(this);
+		
+		this.props.socket.on('highscore', this.handleNewScore);
 	}
 
-	handleNewHighscore(data: any){
+	handleNewScore(data: any){
 		console.log("new highscore received");
 		console.log(data);
 		this.setState({highscore: data.score});

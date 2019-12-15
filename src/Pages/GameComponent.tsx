@@ -8,6 +8,8 @@ import { Button } from "@material-ui/core";
 import InputRange from 'react-input-range';
 import Slider from 'react-input-slider';
 import HighscoreComponent from "./Game/HighscoreComponent";
+import openSocket from "socket.io-client";
+import { Socket } from "dgram";
 
 
 export interface IProps {
@@ -17,6 +19,7 @@ export interface IProps {
 }
 
 export interface IState {
+	socket: SocketIOClient.Socket,
 	isRunning: boolean,
 	playBtnLabel: String,
 	gameLogicComponent: GameLogicComponent,
@@ -48,6 +51,7 @@ class GameComponent extends React.Component<IProps, IState> {
 		this.numberOfSoundsChanged = this.numberOfSoundsChanged.bind(this);
 
 		this.state = {
+			socket: openSocket('http://localhost:4000'),
 			isRunning: false,
 			playBtnLabel: 'Play',
 			gameLogicComponent: new GameLogicComponent(3,3,3,2),
@@ -88,7 +92,7 @@ class GameComponent extends React.Component<IProps, IState> {
 
 	startGame () {
 		const newPlayBtnLabel = 'Stop';
-		var intervalId = setInterval(this.tick, 1000);
+		var intervalId = setInterval(this.tick, 100);
 
 		const glc = new GameLogicComponent(this.state.nextMapSize, this.state.nextMapSize, this.state.nextNumberOfSounds, this.state.nextNBack);
 		this.setState({score: 0, gameLogicComponent:glc, playBtnLabel: newPlayBtnLabel, eligibleForPosQuess:true, numberOfSounds: this.state.nextNumberOfSounds, nBack: this.state.nextNBack, mapSize: this.state.nextMapSize, eligibleForSoundQuess:true, isRunning: true, timeLeft: 30, timerId: intervalId})
@@ -99,6 +103,7 @@ class GameComponent extends React.Component<IProps, IState> {
 		var emptySquare;
 		clearInterval(this.state.timerId);
 		this.setState({playBtnLabel: newPlayBtnLabel,eligibleForPosQuess:false, numberOfSounds: this.state.nextNumberOfSounds, nBack: this.state.nextNBack, mapSize: this.state.nextMapSize, eligibleForSoundQuess:false, isRunning: false, timeLeft: 0, timerId: 0, selectedSquare: emptySquare});
+		this.state.socket.emit('score', {score: this.state.score});
 	}
 
 	tick(){
@@ -153,8 +158,7 @@ class GameComponent extends React.Component<IProps, IState> {
 		const scoreProps: any = {};
 		scoreProps.score = this.state.score;
 
-		const highScoreProps: any = {}
-		const highscoreState = {highscore: 0};
+		const highScoreProps: any = {socket: this.state.socket}
 
 		return (
 			<div>
