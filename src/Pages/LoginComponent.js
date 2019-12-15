@@ -37,13 +37,13 @@ export default class LoginComponent extends React.Component {
         if (AuthService.isAuthenticated()) {
           console.log("user logged in");
           console.log(res.data);
+          window.location.pathname = '/'
         }
       } else {
         this.setState({ message: res.data.message });
       };
     });
 
-    window.location.pathname = '/'
   };
 
   newUser = () => {
