@@ -9,7 +9,7 @@ interface IProps{
 	render() {
 		return (
 			<div>
-	<p>ScoreComponent component works {this.props.score}</p>
+				<p>Current score is: {this.props.score}</p>
 			</div>
 		);
 	}

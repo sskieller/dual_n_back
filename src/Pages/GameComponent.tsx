@@ -29,6 +29,8 @@ export interface IState {
 	nextMapSize: number;
 	nBack: number;
 	nextNBack: number;
+	numberOfSounds: number;
+	nextNumberOfSounds: number;
 }
 
 class GameComponent extends React.Component<IProps, IState> {
@@ -42,17 +44,20 @@ class GameComponent extends React.Component<IProps, IState> {
 		this.guessSound = this.guessSound.bind(this);
 		this.mapSizeChanged = this.mapSizeChanged.bind(this);
 		this.nBackChanged = this.nBackChanged.bind(this);
+		this.numberOfSoundsChanged = this.numberOfSoundsChanged.bind(this);
 
 		this.state = {
 			isRunning: false,
 			playBtnLabel: 'Play',
-			gameLogicComponent: new GameLogicComponent(3,3,2),
+			gameLogicComponent: new GameLogicComponent(3,3,3,2),
 			timeLeft: 0,
 			score: 0,
 			mapSize: 3,
 			nextMapSize: 3,
 			nBack: 2,
-			nextNBack: 2
+			nextNBack: 2,
+			numberOfSounds: 3,
+			nextNumberOfSounds: 3
 		}
 	}
 
@@ -80,21 +85,19 @@ class GameComponent extends React.Component<IProps, IState> {
 		}
 	}
 
-	startGame (){
+	startGame () {
 		const newPlayBtnLabel = 'Stop';
 		var intervalId = setInterval(this.tick, 1000);
 
-		this.setState({playBtnLabel: newPlayBtnLabel, eligibleForPosQuess:true, nBack: this.state.nextNBack, mapSize: this.state.nextMapSize, eligibleForSoundQuess:true, isRunning: true, timeLeft: 30, timerId: intervalId})
-		this.state.gameLogicComponent.columns = this.state.mapSize;
-		this.state.gameLogicComponent.rows = this.state.mapSize;
-		this.state.gameLogicComponent.nBack = this.state.nBack;
+		const glc = new GameLogicComponent(this.state.nextMapSize, this.state.nextMapSize, this.state.nextNumberOfSounds, this.state.nextNBack);
+		this.setState({score: 0, gameLogicComponent:glc, playBtnLabel: newPlayBtnLabel, eligibleForPosQuess:true, numberOfSounds: this.state.nextNumberOfSounds, nBack: this.state.nextNBack, mapSize: this.state.nextMapSize, eligibleForSoundQuess:true, isRunning: true, timeLeft: 30, timerId: intervalId})
 	}
 
 	stopGame(){
 		const newPlayBtnLabel = 'Play';
 		var emptySquare;
 		clearInterval(this.state.timerId);
-		this.setState({playBtnLabel: newPlayBtnLabel,eligibleForPosQuess:false, nBack: this.state.nextNBack, mapSize: this.state.nextMapSize, eligibleForSoundQuess:false, isRunning: false, timeLeft: 0, timerId: 0, selectedSquare: emptySquare});
+		this.setState({playBtnLabel: newPlayBtnLabel,eligibleForPosQuess:false, numberOfSounds: this.state.nextNumberOfSounds, nBack: this.state.nextNBack, mapSize: this.state.nextMapSize, eligibleForSoundQuess:false, isRunning: false, timeLeft: 0, timerId: 0, selectedSquare: emptySquare});
 	}
 
 	tick(){
@@ -106,12 +109,11 @@ class GameComponent extends React.Component<IProps, IState> {
 		var nextSquare;
 		if(this.state.timeLeft % 3 == 0){
 			nextSquare = this.state.gameLogicComponent.getRandomBoardPosition();
+			this.state.gameLogicComponent.playRandomSound();
 			this.setState({eligibleForPosQuess:true, eligibleForSoundQuess: true});
 		}else if(this.state.timeLeft % 3 == 2){
 			nextSquare = this.state.selectedSquare;
 		}
-		
-		// gameLogicComponent.getRandomSound() -- Get random sound
 
 		this.setState({timeLeft: this.state.timeLeft-1, selectedSquare: nextSquare});
 	}
@@ -121,7 +123,6 @@ class GameComponent extends React.Component<IProps, IState> {
 			this.setState({mapSize: e, nextMapSize: e})
 		}else{
 			this.setState({nextMapSize: e})
-
 		}
 	}
 
@@ -130,6 +131,14 @@ class GameComponent extends React.Component<IProps, IState> {
 			this.setState({nBack: e, nextNBack: e})
 		}else{
 			this.setState({nextNBack: e})
+		}
+	}
+
+	numberOfSoundsChanged(e: number){
+		if(!this.state.isRunning){
+			this.setState({numberOfSounds: e, nextNumberOfSounds: e})
+		}else{
+			this.setState({nextNumberOfSounds: e})
 		}
 	}
 
@@ -165,6 +174,16 @@ class GameComponent extends React.Component<IProps, IState> {
 					xmax={4}
 					x={this.state.nextNBack}
 					onChange={({ x }) => this.nBackChanged(x)}
+				/>
+
+				<div>{'Number of sounds: ' + this.state.nextNumberOfSounds}</div>
+				<Slider
+					axis="x"
+					xstep={1}
+					xmin={2}
+					xmax={26}
+					x={this.state.nextNumberOfSounds}
+					onChange={({ x }) => this.numberOfSoundsChanged(x)}
 				/>
 
 				<div className="GameSpace">
