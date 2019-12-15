@@ -42,7 +42,14 @@ export default class LoginComponent extends React.Component {
         this.setState({ message: res.data.message });
       };
     });
+
+    window.location.pathname = '/'
   };
+
+  newUser = () => {
+    window.location.pathname = '/user/new'
+
+  }
 
   onChange = (e) => {
     this.setState({
@@ -71,6 +78,13 @@ export default class LoginComponent extends React.Component {
               Login
           </Button>
           </form>
+          <div className="newuser-btn">
+            <Button variant="contained" color="secondary" onClick={this.newUser}>
+              New User
+            </Button>
+
+          </div>
+
         </Container>
       </React.Fragment>
       // </div>
