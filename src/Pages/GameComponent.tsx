@@ -7,6 +7,7 @@ import ScoreComponent from "./Game/ScoreComponent";
 import { Button } from "@material-ui/core";
 import InputRange from 'react-input-range';
 import Slider from 'react-input-slider';
+import HighscoreComponent from "./Game/HighscoreComponent";
 
 
 export interface IProps {
@@ -152,6 +153,9 @@ class GameComponent extends React.Component<IProps, IState> {
 		const scoreProps: any = {};
 		scoreProps.score = this.state.score;
 
+		const highScoreProps: any = {}
+		const highscoreState = {highscore: 0};
+
 		return (
 			<div>
 				<button className="GameSpace" onClick={this.playButton}> {this.state.playBtnLabel} </button>
@@ -193,6 +197,7 @@ class GameComponent extends React.Component<IProps, IState> {
                 	<Button color="secondary" disabled={!this.state.eligibleForSoundQuess} onClick={this.guessSound}>Sound</Button>
 				</div>
 					<ScoreComponent {...scoreProps}></ScoreComponent>
+					<HighscoreComponent {...highScoreProps}></HighscoreComponent>
 			</div>
 		);
 	}
