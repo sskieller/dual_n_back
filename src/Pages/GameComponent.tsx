@@ -94,7 +94,7 @@ class GameComponent extends React.Component<IProps, IState> {
 
 	startGame () {
 		const newPlayBtnLabel = 'Stop';
-		var intervalId = setInterval(this.tick, 100);
+		var intervalId = setInterval(this.tick, 1000);
 
 		const glc = new GameLogicComponent(this.state.nextMapSize, this.state.nextMapSize, this.state.nextNumberOfSounds, this.state.nextNBack);
 		this.setState({score: 0, gameLogicComponent:glc, playBtnLabel: newPlayBtnLabel, eligibleForPosQuess:true, numberOfSounds: this.state.nextNumberOfSounds, nBack: this.state.nextNBack, mapSize: this.state.nextMapSize, eligibleForSoundQuess:true, isRunning: true, timeLeft: 30, timerId: intervalId})
