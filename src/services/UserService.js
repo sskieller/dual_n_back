@@ -1,7 +1,7 @@
 import axios from "axios";
 import AuthService from "./AuthService";
 
-const USER_API_BASE_URL = "http://localhost:4000/user/";
+const USER_API_BASE_URL = "https://secure-chamber-96202.herokuapp.com:4000/user/";
 
 class UserService {
 	registerUser(user) {

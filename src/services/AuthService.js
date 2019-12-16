@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const USER_API_BASE_URL = "http://localhost:4000/users/";
+const USER_API_BASE_URL = "https://secure-chamber-96202.herokuapp.com:4000/users/";
 
 class AuthService {
 	login(credentials) {

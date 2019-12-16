@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const API_URL = "http://localhost:4000/users/";
+const API_URL = "https://secure-chamber-96202.herokuapp.com:4000/users/";
 
 export const userPostFetch = user => {
 	return dispatch => {
