@@ -12,17 +12,14 @@ export interface IState {
 export default class HighscoreComponent extends React.Component<IProps, IState> {
 	constructor(props: any){
 		super(props);
-		this.state = {highscore: 0};
 		
-		// Bind functions so that it doesn't break on render
+		this.state = {highscore: 0};
 		this.handleNewScore = this.handleNewScore.bind(this);
 		
 		this.props.socket.on('highscore', this.handleNewScore);
 	}
 
 	handleNewScore(data: any){
-		console.log("new highscore received");
-		console.log(data);
 		this.setState({highscore: data.score});
 	}
 
