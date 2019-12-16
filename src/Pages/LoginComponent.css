@@ -13,5 +13,12 @@
 
 .newuser-btn {
   margin-top: 20px;
-  width: 100%;
+}
+
+.button-style {
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  width: 200px;
+  
+  
 }

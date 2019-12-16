@@ -16,7 +16,7 @@ class App extends React.Component {
 			<Router>
 				<div className="container">
 					<nav className="navbar navbar-expand-lg navbar-light bg-light">
-						<a className="navbar-brand" href="/" target="_blank" rel="noopener noreferrer">
+						<a className="navbar-brand" href="/" rel="noopener noreferrer">
 							<img src={logo} width="30" height="30" alt="google" />
 						</a>
 
@@ -24,7 +24,7 @@ class App extends React.Component {
 						<div className="collpase navbar-collapse">
 							<ul className="navbar-nav mr-auto">
 								<li className="navbar-item">
-									<Link to="/" className="nav-link">Game</Link>
+									<Link to="/user/login" className="nav-link">Log out</Link>
 								</li>
 							</ul>
 						</div>

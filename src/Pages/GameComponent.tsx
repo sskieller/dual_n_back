@@ -4,12 +4,14 @@ import './Game/GameComponent.css';
 import GameLogicComponent from "./Game/GameLogicComponent";
 import { stat } from "fs";
 import ScoreComponent from "./Game/ScoreComponent";
-import { Button } from "@material-ui/core";
+//import { Button } from "@material-ui/core";
 import InputRange from 'react-input-range';
 import Slider from 'react-input-slider';
 import HighscoreComponent from "./Game/HighscoreComponent";
 import openSocket from "socket.io-client";
 import { Socket } from "dgram";
+
+import Button from '@material-ui/core/Button';
 
 
 export interface IProps {
@@ -161,10 +163,10 @@ class GameComponent extends React.Component<IProps, IState> {
 		const highScoreProps: any = {socket: this.state.socket}
 
 		return (
-			<div>
-				<button className="GameSpace" onClick={this.playButton}> {this.state.playBtnLabel} </button>
+			<div className="play-div" >
+				<Button className="play-button" variant="contained" color="secondary" onClick={this.playButton}> {this.state.playBtnLabel} </Button>
 
-				<div>{'Map Size: ' + this.state.nextMapSize}</div>
+				<div className="top-slider" >{'Map Size: ' + this.state.nextMapSize}</div>
 				<Slider
 					axis="x"
 					xstep={1}

@@ -1,5 +1,14 @@
 .GameSpace{
-    align-content: center;
     height: 60%;
     width: 60%;
+}
+
+.top-slider{
+    margin-top: 20px;
+}
+
+.play-button{
+    align-items: flex-start !important;
+  justify-content: flex-start !important;
+  width: 200px;
 }

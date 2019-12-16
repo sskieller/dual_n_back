@@ -41,6 +41,9 @@ export default class Registration extends React.Component {
 		 if(response.data.code == 200){
 		   var loginmessage = "Not Registered yet.Go to registration";
 		 }
+
+		 window.location.pathname = '/user/login'
+
 	   })
 	   .catch(function (error) {
 		 console.log(error);

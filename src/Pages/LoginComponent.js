@@ -74,13 +74,14 @@ export default class LoginComponent extends React.Component {
             <TextField type="text" label="Username" fullWidth margin="normal" name="username" value={this.state.username} onChange={this.onChange} />
             <TextField type="password" label="Password" fullWidth margin="normal" name="password" value={this.state.password} onChange={this.onChange} />
 
-            <Button variant="contained" color="secondary" onClick={this.login}>
+            <Button className="button-style" variant="contained" color="secondary" onClick={this.login}>
               Login
           </Button>
           </form>
           <div className="newuser-btn">
-            <Button variant="contained" color="secondary" onClick={this.newUser}>
+            <Button className="button-style" variant="contained" color="secondary" onClick={this.newUser}>
               New User
+              
             </Button>
 
           </div>
