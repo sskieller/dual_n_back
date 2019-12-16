@@ -2,7 +2,7 @@ import React from "react";
 
 import LoginComponent from "./LoginComponent";
 import RegistrationComponent from "./RegistrationComponent";
-import GameComponent from "./GameComponent";
+import GameComponent from "./Pages/Game/GameComponent";
 
 export default class HomeComponent extends React.Component {
 	render() {

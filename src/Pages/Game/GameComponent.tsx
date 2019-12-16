@@ -1,17 +1,20 @@
 import React from "react";
-import BoardComponent from "./Game/BoardComponent";
-import './Game/GameComponent.css';
-import GameLogicComponent from "./Game/GameLogicComponent";
+import BoardComponent from "./BoardComponent";
+import './GameComponent.css';
+import GameLogicComponent from "./GameLogicComponent";
 import { stat } from "fs";
-import ScoreComponent from "./Game/ScoreComponent";
+import ScoreComponent from "./ScoreComponent";
 //import { Button } from "@material-ui/core";
 import InputRange from 'react-input-range';
 import Slider from 'react-input-slider';
-import HighscoreComponent from "./Game/HighscoreComponent";
+import HighscoreComponent from "./HighscoreComponent";
 import openSocket from "socket.io-client";
 import { Socket } from "dgram";
 
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container'
+import Row from '@material-ui/core/TableRow'
+import Col from '@material-ui/core/FormControl'
 
 
 export interface IProps {
@@ -163,6 +166,7 @@ class GameComponent extends React.Component<IProps, IState> {
 		const highScoreProps: any = {socket: this.state.socket}
 
 		return (
+
 			<div className="play-div" >
 				<Button className="play-button" variant="contained" color="secondary" onClick={this.playButton}> {this.state.playBtnLabel} </Button>
 
@@ -204,6 +208,7 @@ class GameComponent extends React.Component<IProps, IState> {
 				</div>
 					<ScoreComponent {...scoreProps}></ScoreComponent>
 					<HighscoreComponent {...highScoreProps}></HighscoreComponent>
+					
 			</div>
 		);
 	}

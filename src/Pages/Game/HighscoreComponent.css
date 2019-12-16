@@ -1,0 +1,9 @@
+.list-group{
+    width: 200px !important;
+    color: white;
+}
+
+.list-color{
+    color: black;
+    background-color: #eeeeee;
+}

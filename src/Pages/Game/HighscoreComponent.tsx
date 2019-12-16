@@ -1,19 +1,21 @@
 import React from "react";
 import openSocket from "socket.io-client";
+import ReactList from 'react-list';
+import './HighscoreComponent.css';
 
 export interface IProps{
 	socket: SocketIOClient.Socket;
 }
 
 export interface IState {
-	highscore: number
+	highscore: Array<Number>
 }
 
 export default class HighscoreComponent extends React.Component<IProps, IState> {
 	constructor(props: any){
 		super(props);
 		
-		this.state = {highscore: 0};
+		this.state = {highscore: []};
 		this.handleNewScore = this.handleNewScore.bind(this);
 		
 		this.props.socket.on('highscore', this.handleNewScore);
@@ -21,12 +23,27 @@ export default class HighscoreComponent extends React.Component<IProps, IState> 
 
 	handleNewScore(data: any){
 		this.setState({highscore: data.score});
+	
 	}
+
 
 	render() {
 		return (
+			
+
 			<div>
-				<p>{'HighscoreComponent component works ' + this.state.highscore}</p>
+			<h3>High score</h3>
+			<React.Fragment>
+				<ul className="list-group">
+					{this.state.highscore.map(highscores => (
+						<li className="list-group-item list-color">
+							{highscores}
+						</li>
+					))}
+				</ul>
+			</React.Fragment>
+
+		
 			</div>
 		);
 	}

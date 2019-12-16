@@ -3,6 +3,10 @@
     width: 60%;
 }
 
+.play-div{
+    width: 100%;
+}
+
 .top-slider{
     margin-top: 20px;
 }
@@ -11,4 +15,8 @@
     align-items: flex-start !important;
   justify-content: flex-start !important;
   width: 200px;
+}
+
+.left-col{
+    float: right;
 }

@@ -3,12 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import PrivateRoute from "./Pages/PrivateRoute";
 
-import Game from "./Pages/GameComponent";
+import Game from "./Pages/Game/GameComponent";
 import Login from "./Pages/LoginComponent";
 import Registration from "./Pages/RegistrationComponent";
 
 import logo from "./logo/logo192.png";
-import GameComponent from "./Pages/GameComponent";
+import GameComponent from "./Pages/Game/GameComponent";
 
 class App extends React.Component {
 	render() {
