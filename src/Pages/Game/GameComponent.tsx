@@ -56,7 +56,7 @@ class GameComponent extends React.Component<IProps, IState> {
 		this.numberOfSoundsChanged = this.numberOfSoundsChanged.bind(this);
 
 		this.state = {
-			socket: openSocket('https://secure-chamber-96202.herokuapp.com:4000'),
+			socket: openSocket('https://secure-chamber-96202.herokuapp.com'),
 			isRunning: false,
 			playBtnLabel: 'Play',
 			gameLogicComponent: new GameLogicComponent(3,3,3,2),

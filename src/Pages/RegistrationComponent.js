@@ -26,7 +26,7 @@ export default class Registration extends React.Component {
 			return;
 		}
 
-		var apiBaseUrl = "https://secure-chamber-96202.herokuapp.com:4000/users/";
+		var apiBaseUrl = "https://secure-chamber-96202.herokuapp.com/users/";
 
 		console.log("values",this.state.username,this.state.password);
 		//To be done:check for empty values before hitting submit
